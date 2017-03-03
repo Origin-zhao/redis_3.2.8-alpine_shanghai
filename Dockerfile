@@ -5,10 +5,7 @@ RUN apk update \
     && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
     && echo 'Asia/Shanghai' > /etc/timezone\
     && rm -fr /var/cache/apk/\
-    
-RUN echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf
-RUN echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local    
-    #&& echo never > /sys/kernel/mm/transparent_hugepage/enabled\
-
+    && echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf\
+    && echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
     
     
