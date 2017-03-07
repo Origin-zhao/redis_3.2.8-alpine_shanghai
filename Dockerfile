@@ -10,6 +10,12 @@ ENV REDIS_VERSION 3.2.8
 ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-3.2.8.tar.gz
 ENV REDIS_DOWNLOAD_SHA1 6780d1abb66f33a97aad0edbe020403d0a15b67f
 
+RUN apk update \ 
+    && apk add tzdata \
+    && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime\
+    && echo 'Asia/Shanghai' > /etc/timezone\
+    && rm -fr /var/cache/apk/
+    
 # for redis-sentinel see: http://redis.io/topics/sentinel
 RUN set -ex \
 	\
